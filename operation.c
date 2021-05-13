@@ -66,7 +66,6 @@ void shift_up(t_stack *top)
 void shift_down(t_stack *top)
 {
 	t_stack *tmp;
-	t_stack *tmp2;
 	t_stack *curr;
 
 	if (stack_size(top) > 1)
