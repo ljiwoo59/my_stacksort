@@ -16,6 +16,8 @@ void printlst(t_stack *top)
 void init_stack(t_stack *top, char *data)
 {
 	t_stack *new;
+	t_stack *curr;
+	t_stack *tmp;
 	int num;
 	
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
@@ -24,9 +26,27 @@ void init_stack(t_stack *top, char *data)
 		exit(0);
 	}
 	num = ft_atoi(data);
-	new->next = top->next;
-	new->data = num;
-	top->next = new;
+	if (top->next == NULL)
+	{
+		top->next = new;
+		new->data = num;
+	}
+	else
+	{
+		curr = top->next;
+		while (curr != NULL)
+		{
+			tmp = curr;
+			if (curr->data == num)
+			{
+				write(1, "Error\n", 6);
+				exit(0);
+			}
+			curr = curr->next;
+		}
+		new->data = num;
+		tmp->next = new;
+	}
 }
 
 int main(int argc, char *argv[])
@@ -52,17 +72,12 @@ int main(int argc, char *argv[])
 		i++;
 	}
 
-	//swap(top_a);	
-	//push(top_a, top_b);
-	//push(top_a, top_b);
-	//shift_up(top_a);
-	//shift_up(top_a);
-	shift_down(top_a);
-	shift_down(top_a);
+	//pb(top_a, top_b);
 	//test	
 	printlst(top_a);
 	printf("%s\n", "-");
 	printlst(top_b);
 
+	//free
 	return (0);
 }
