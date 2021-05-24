@@ -10,6 +10,12 @@ typedef struct s_stack
 	int data;
 }	t_stack;
 
+typedef struct s_count
+{
+	struct s_count *next;
+	int count;
+}	t_count;
+
 int ft_atoi(char *str);
 int validation(char *str);
 int stack_size(t_stack *top);
@@ -31,4 +37,7 @@ void rrr(t_stack *top_a, t_stack *top_b);
 void init_stack(t_stack *top, char *data);
 void printlst(t_stack *top);
 
+
+int ft_strcmp(char *s1, char *s2);
+int is_sorted(t_stack *top_a, t_stack *top_b);
 #endif
