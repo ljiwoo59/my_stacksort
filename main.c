@@ -38,8 +38,8 @@ int main(int argc, char *argv[])
 		i++;
 	}
 
-	//pb(top_a, top_b);
-	//test	
+	//test
+	push_swap(top_a, top_b);
 	printlst(top_a);
 	printf("%s\n", "-");
 	printlst(top_b);

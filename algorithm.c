@@ -17,7 +17,7 @@ void bubble_sort(int *arr, int n)
 	i = 0;
 	while (i < n - 1)
 	{
-		j = 0
+		j = 0;
 		while (j < n - i - 1)
 		{
 			if (arr[j] > arr[j + 1])
@@ -28,39 +28,24 @@ void bubble_sort(int *arr, int n)
 	}
 }
 
-int find_pivot(t_stack *top)
+int find_pivot(t_stack *top, int num)
 {
-	int tmp_arr[stack_size(top)];
+	int tmp_arr[num];
 	t_stack *curr;
+	int i;
 
 	curr = top->next;
 	i = 0;
-	while (curr != NULL)
+	while (i < num)
 	{
 		tmp_arr[i++] = curr->data;
 		curr = curr->next;
 	}
-	i = 0;
-	bubble_sort(tmp_arr, stack_size(top));
-	
-	return (tmp_arr[(stack_size(top) / 2) - 1]);
-}
-
-void init_push(t_stack *top_a, t_stack *top_b)
-{
-	int pivot;
-	int i;
-
-	pivot = find_pivot(top_a);
-	i = 0
-	while (stack_size(top_a) - i)
-	{
-		if (top->next->data >= pivot)
-			pb(top_a, top_b);
-		else
-			ra(top_a);
-		i++;
-	}
+	bubble_sort(tmp_arr, num);
+	if (num % 2 == 0)
+		return (tmp_arr[(num / 2) - 1]);
+	else
+		return (tmp_arr[(num / 2)]);
 }
 
 int min(t_stack *top)
@@ -103,7 +88,7 @@ void size_3_sort(t_stack *top_a)
 {
 	t_stack *f;
 
-	f = top->next;
+	f = top_a->next;
 	if (f->data == min(top_a) && f->next->data == max(top_a))
 	{
 		ra(top_a);
@@ -151,10 +136,9 @@ void count_append(t_count *curr, int c)
 		curr->next = new;
 	else
 	{
-		curr = top->next;
-		while (curr != NULL)
+		while (curr->next != NULL)
 			curr = curr->next;
-		curr = new;
+		curr->next = new;
 	}
 }
 
@@ -162,62 +146,25 @@ void push_swap(t_stack *top_a, t_stack *top_b)
 {
 	t_count *here;
 	t_count *curr;
-	int pivot;
-	int i;
+	int left;
 	int c;
 
-	if (!(here = (t_count)malloc(sizeof(t_count))))
+	if (!(here = (t_count *)malloc(sizeof(t_count))))
 	{
 		write(1, "Error\n", 6);
 		exit(0);
 	}
 	here->next = NULL;
-	init_push(top_a, top_b);
-	// loop a
-	while (stack_size(top_a) < 3)
+	if (stack_size(top_a) == 3)
 	{
-		pivot = find_pivot(top_a);
-		i = 0;
-		c = 0;
-		while (stack_size(top_a) - i)
-		{
-			if (top->next->data >= pivot)
-			{
-				pb(top_a, top_b);
-				c++;
-			}
-			else
-				ra(top_a);
-			i++;
-		}
-		count_append(here, c);
+		size_3_sort(top_a);
+		return ;
 	}
-	// reput a
-	while (stack_size(here))
-	{
-		if (stack_size(top_a) == 2)
-		{
-			if (top_a->next->data > top_a->next->next->data)
-				sa(top_a);
-		}
-		else if (stack_size(top_a) == 3)
-			size_3_sort(top_a);
-		i = 0;
-		curr = here;
-		while (curr->next->next != NULL)
-			curr = curr->next;
-		while ((curr->next->count) - (i++))
-			pa(top_b, top_a);
-		if (curr->next->count == 2)
-		{
-			if (top_a->next->data > top_a->next->next->data)
-				sa(top_a);
-		}
-
-		else if (curr->next->count == 3)
-			size_3_sort(top_a);
-		free(curr->next);
-		curr->next = NULL;
-	}
-	// loop b
+	left = div_a(top_a, top_b, here, stack_size(top_a));
+	if (left == 2)
+		if (top_a->next->data > top_a->next->next->data)
+			sa(top_a);
+	if (left == 3)
+		size_3_sort(top_a);
+	b_to_a(top_a, top_b, here);
 }

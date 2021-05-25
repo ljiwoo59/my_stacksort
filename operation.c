@@ -12,7 +12,21 @@ int stack_size(t_stack *top)
 		size++;
 		curr = curr->next;
 	}
+	return (size);
+}
 
+int count_size(t_count *here)
+{
+	t_count *curr;
+	int size;
+
+	curr = here->next;
+	size = 0;
+	while (curr != NULL)
+	{
+		size++;
+		curr = curr->next;
+	}
 	return (size);
 }
 

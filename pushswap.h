@@ -3,6 +3,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -16,9 +17,12 @@ typedef struct s_count
 	int count;
 }	t_count;
 
+void printlst(t_stack *top);
+
 int ft_atoi(char *str);
 int validation(char *str);
 int stack_size(t_stack *top);
+int count_size(t_count *here);
 void swap(t_stack *top);
 void push(t_stack *top1, t_stack *top2);
 void shift_up(t_stack *top);
@@ -35,8 +39,17 @@ void rra(t_stack *top_a);
 void rrb(t_stack *top_b);
 void rrr(t_stack *top_a, t_stack *top_b);
 void init_stack(t_stack *top, char *data);
-void printlst(t_stack *top);
-
+void push_swap(t_stack *top_a, t_stack *top_b);
+void count_append(t_count *curr, int c);
+void size_3_sort(t_stack *top_a);
+int max(t_stack *top);
+int min(t_stack *top);
+void init_push(t_stack *top_a, t_stack *top_b);
+int find_pivot(t_stack *top, int num);
+void bubble_sort(int *arr, int n);
+void index_swap(int *i, int *j);
+int div_a(t_stack *top_a, t_stack *top_b, t_count *here, int num);
+void b_to_a(t_stack *top_a, t_stack *top_b, t_count *here);
 
 int ft_strcmp(char *s1, char *s2);
 int is_sorted(t_stack *top_a, t_stack *top_b);
