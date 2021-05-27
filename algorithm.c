@@ -160,11 +160,11 @@ void push_swap(t_stack *top_a, t_stack *top_b)
 		size_3_sort(top_a);
 		return ;
 	}
-	left = div_a(top_a, top_b, here, stack_size(top_a));
-	if (left == 2)
-		if (top_a->next->data > top_a->next->next->data)
-			sa(top_a);
-	if (left == 3)
-		size_3_sort(top_a);
-	b_to_a(top_a, top_b, here);
+	div_a(top_a, top_b, here, stack_size(top_a));
+//	if (left == 2)
+//		if (top_a->next->data > top_a->next->next->data)
+//			sa(top_a);
+//	if (left == 3)
+//		size_3_sort(top_a);
+//	b_to_a(top_a, top_b, here);
 }

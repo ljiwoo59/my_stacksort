@@ -40,9 +40,9 @@ int main(int argc, char *argv[])
 
 	//test
 	push_swap(top_a, top_b);
-	printlst(top_a);
-	printf("%s\n", "-");
-	printlst(top_b);
+//	printlst(top_a);
+//	printf("%s\n", "-");
+//	printlst(top_b);
 
 	//free
 	return (0);
