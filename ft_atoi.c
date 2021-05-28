@@ -23,8 +23,7 @@ int			ft_atoi(char *str)
 	int			minus;
 
 	num = 0;
-	minus = 1;
-	
+	minus = 1;	
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')

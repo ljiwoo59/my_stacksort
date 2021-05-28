@@ -1,19 +1,10 @@
 #include "pushswap.h"
 
-void init_stack(t_stack *top, char *data)
+void stack_append(t_stack *top, t_stack *new, int num)
 {
-	t_stack *new;
 	t_stack *curr;
 	t_stack *tmp;
-	int num;
 	
-	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
-	{
-		write(1, "Error\n", 6);
-		exit(0);
-	}
-	new->next = NULL;
-	num = ft_atoi(data);
 	if (top->next == NULL)
 	{
 		top->next = new;
@@ -35,6 +26,21 @@ void init_stack(t_stack *top, char *data)
 		new->data = num;
 		tmp->next = new;
 	}
+}
+
+void init_stack(t_stack *top, char *data)
+{
+	t_stack *new;
+	int num;
+	
+	num = ft_atoi(data);
+	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
+	{
+		write(1, "Error\n", 6);
+		exit(0);
+	}
+	new->next = NULL;
+	stack_append(top, new, num);
 }
 
 int is_sorted(t_stack *top_a, t_stack *top_b)

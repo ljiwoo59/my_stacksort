@@ -29,21 +29,20 @@ int main(int argc, char *argv[])
 		write(1, "Error\n", 6);
 		exit(0);
 	}
-	i = 1;
 	top_a->next = NULL;
 	top_b->next = NULL;
+	i = 1;
 	while (i < argc)
 	{
 		init_stack(top_a, argv[i]);
 		i++;
 	}
-
 	//test
 	push_swap(top_a, top_b);
-//	printlst(top_a);
-//	printf("%s\n", "-");
-//	printlst(top_b);
+	//printlst(top_a);
+	//printf("%s\n", "-");
+	//printlst(top_b);
 
-	//free
+	free_all(top_a, top_b);
 	return (0);
 }

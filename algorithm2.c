@@ -1,5 +1,31 @@
 #include "pushswap.h"
 
+void div_a5(t_stack *top_a, t_stack *top_b, t_count *here, int num)
+{
+	int pivot;
+	int i;
+	int c;
+
+	pivot = find_pivot(top_a, num);
+	i = 0;
+	c = 0;
+	while (num - i)
+	{
+		if (top_a->next->data < pivot)
+		{
+			pb(top_a, top_b);
+			c++;
+		}
+		else
+			ra(top_a);
+		i++;
+	}
+	count_append(here, c);
+	num -= c;
+	size_3_sort2(top_a);
+	b_to_a(top_a, top_b, here);
+}
+
 void div_a(t_stack *top_a, t_stack *top_b, t_count *here, int num)
 {
 	int pivot;
