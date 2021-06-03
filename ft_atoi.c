@@ -1,20 +1,19 @@
 #include "pushswap.h"
 
-int validation(char *str)
+void validation(char *str)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
+	if (*str == '+' || *str == '-')
 	{
-		if (!(str[i] >= '0' && str[i] <= '9')) 
-		{
-			write(1, "Error\n", 6);
-			exit(0);
-		}
-		i++;
+		str++;
+		if (!(*str))
+			error();
 	}
-	return (0);
+	while (*str)
+	{
+		if (!(*str >= '0' && *str <= '9')) 
+			error();
+		str++;
+	}
 }
 
 int			ft_atoi(char *str)
@@ -24,18 +23,13 @@ int			ft_atoi(char *str)
 
 	num = 0;
 	minus = 1;	
+	validation(str);
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
 			minus *= -1;
 		str++;
-		if (!(*str))
-		{
-			write(1, "Error\n", 6);
-			exit(0);
-		}
 	}
-	validation(str);
 	while (*str >= '0' && *str <= '9')
 	{
 		num *= 10;
@@ -43,5 +37,7 @@ int			ft_atoi(char *str)
 		str++;
 	}
 	num *= minus;
+	if (num > 2147483647 || num < -2147483648)
+		error();
 	return ((int)num);
 }

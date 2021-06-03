@@ -1,35 +1,5 @@
 #include "pushswap.h"
 
-int stack_size(t_stack *top)
-{
-	t_stack *curr;
-	int size;
-
-	curr = top->next;
-	size = 0;
-	while (curr != NULL)
-	{
-		size++;
-		curr = curr->next;
-	}
-	return (size);
-}
-
-int count_size(t_count *here)
-{
-	t_count *curr;
-	int size;
-
-	curr = here->next;
-	size = 0;
-	while (curr != NULL)
-	{
-		size++;
-		curr = curr->next;
-	}
-	return (size);
-}
-
 void swap(t_stack *top)
 {
 	t_stack *tmp;

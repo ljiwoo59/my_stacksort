@@ -48,6 +48,8 @@ void size_3_sort(t_stack *top_a)
 
 void size_3_sort2(t_stack *top_a)
 {
+	t_stack *f;
+
 	f = top_a->next;
 	if (f->data == min(top_a) && f->next->data == max(top_a))
 	{

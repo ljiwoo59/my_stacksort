@@ -1,48 +1,5 @@
 #include "pushswap.h"
 
-void stack_append(t_stack *top, t_stack *new, int num)
-{
-	t_stack *curr;
-	t_stack *tmp;
-	
-	if (top->next == NULL)
-	{
-		top->next = new;
-		new->data = num;
-	}
-	else
-	{
-		curr = top->next;
-		while (curr != NULL)
-		{
-			tmp = curr;
-			if (curr->data == num)
-			{
-				write(1, "Error\n", 6);
-				exit(0);
-			}
-			curr = curr->next;
-		}
-		new->data = num;
-		tmp->next = new;
-	}
-}
-
-void init_stack(t_stack *top, char *data)
-{
-	t_stack *new;
-	int num;
-	
-	num = ft_atoi(data);
-	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
-	{
-		write(1, "Error\n", 6);
-		exit(0);
-	}
-	new->next = NULL;
-	stack_append(top, new, num);
-}
-
 int is_sorted(t_stack *top_a, t_stack *top_b)
 {
 	t_stack *curr;
@@ -60,4 +17,74 @@ int is_sorted(t_stack *top_a, t_stack *top_b)
 		curr = curr->next;
 	}
 	return (1);
+}
+
+void stack_append(t_stack *top, t_stack *new, int num)
+{
+	t_stack *curr;
+	t_stack *tmp;
+	
+	if (top->next == NULL)
+	{
+		top->next = new;
+		new->data = num;
+	}
+	else
+	{
+		curr = top->next;
+		while (curr != NULL)
+		{
+			tmp = curr;
+			if (curr->data == num)
+				error();
+			curr = curr->next;
+		}
+		new->data = num;
+		tmp->next = new;
+	}
+}
+
+void count_append(t_count *curr, int c)
+{
+	t_count *new;
+
+	if (!(new = (t_count *)malloc(sizeof(t_count))))
+		error();
+	new->next = NULL;
+	new->count = c;
+	if (curr->next == NULL)
+		curr->next = new;
+	else
+	{
+		while (curr->next != NULL)
+			curr = curr->next;
+		curr->next = new;
+	}
+}
+
+void free_all(t_stack *top_a, t_stack *top_b)
+{
+	t_stack *curr;
+	t_stack *tmp;
+
+	curr = top_a;
+	while (curr != NULL)
+	{
+		tmp = curr;
+		curr = curr->next;
+		free(tmp);
+	}
+	curr = top_b;
+	while (curr != NULL)
+	{
+		tmp = curr;
+		curr = curr->next;
+		free(tmp);
+	}
+}
+
+void free_count(t_count* curr)
+{
+	free(curr->next);
+	curr->next = NULL;
 }

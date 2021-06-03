@@ -19,8 +19,9 @@ typedef struct s_count
 
 void printlst(t_stack *top);
 
+void error();
 int ft_atoi(char *str);
-int validation(char *str);
+void validation(char *str);
 int stack_size(t_stack *top);
 int count_size(t_count *here);
 void swap(t_stack *top);
@@ -54,10 +55,14 @@ int find_pivot(t_stack *top, int num);
 void bubble_sort(int *arr, int n);
 void index_swap(int *i, int *j);
 void div_a(t_stack *top_a, t_stack *top_b, t_count *here, int num);
+void div_a2(t_stack *top_a, int num);
+void div_a_rra(t_stack *top_a, int r, int num);
 void div_a5(t_stack *top_a, t_stack *top_b, t_count *here, int num);
 void div_b(t_stack *top_b, t_stack *top_a, t_count *here, int num);
 void b_to_a(t_stack *top_a, t_stack *top_b, t_count *here);
+void b_to_a2(t_stack *top_a, t_stack *top_b, t_count *curr, int num);
 void free_all(t_stack *top_a, t_stack *top_b);
+void free_count(t_count *curr);
 
 int ft_strcmp(char *s1, char *s2);
 int is_sorted(t_stack *top_a, t_stack *top_b);
