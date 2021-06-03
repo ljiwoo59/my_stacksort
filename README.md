@@ -35,8 +35,8 @@ By completing above step, *stack A* will be fully sorted.
 By completing above step, *stack A* will be fully sorted and *stack B* will be empty.
 
 ### Special
-To reduce operations, if *stack A* only has three numbers, use simpler three number operations. Otherwise, use multiple **rra** not to affect sorted numbers in the bottom of *stack A*.
-If *stack A* only has five numbers, **push** numbers to *stack B* if a number < a pivot.
+* To reduce operations, if *stack A* only has three numbers, use simpler three number operations. Otherwise, use multiple **rra** not to affect sorted numbers in the bottom of *stack A*.
+* If *stack A* only has five numbers, **push** numbers to *stack B* if a number < a pivot.
 
 ## Result
 * The worst case of 100 random integers returns **823** operations.
