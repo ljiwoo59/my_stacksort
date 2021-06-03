@@ -31,6 +31,8 @@ int main(int argc, char *argv[])
 	t_stack *top_b;
 	int i;
 
+	if (argc == 1)
+		error();
 	if (!(top_a = (t_stack *)malloc(sizeof(t_stack))))
 		error();
 	if (!(top_b = (t_stack *)malloc(sizeof(t_stack))))
