@@ -1,23 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ji-lee <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/12 14:40:57 by ji-lee            #+#    #+#             */
+/*   Updated: 2021/06/12 16:59:17 by ji-lee           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-//test
-#include <stdio.h>
-void printlst(t_stack *top)
+void	init_stack(t_stack *top, char *data)
 {
-	t_stack *curr = top->next;
-	while (curr != NULL)
-	{
-		printf("%d\n", curr->data);
-		curr = curr->next;
-	}
-}
-//test
+	t_stack		*new;
+	int			num;
 
-void init_stack(t_stack *top, char *data)
-{
-	t_stack *new;
-	int num;
-	
 	num = ft_atoi(data);
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		error();
@@ -25,11 +24,34 @@ void init_stack(t_stack *top, char *data)
 	stack_append(top, new, num);
 }
 
-int main(int argc, char *argv[])
+void	try_split(t_stack *top_a, char *argv)
 {
-	t_stack *top_a;
-	t_stack *top_b;
-	int i;
+	char	**n_arr;
+	int		i;
+	int		len;
+
+	n_arr = ft_split(argv, ' ');
+	i = 0;
+	len = ft_sstrlen(n_arr);
+	while (i < len)
+	{
+		init_stack(top_a, n_arr[i]);
+		free(n_arr[i++]);
+	}
+	free(n_arr);
+}
+
+void	begin(t_stack *top_a, t_stack *top_b)
+{
+	push_swap(top_a, top_b);
+	free_all(top_a, top_b);
+}
+
+int		main(int argc, char *argv[])
+{
+	t_stack	*top_a;
+	t_stack	*top_b;
+	int		i;
 
 	if (argc == 1)
 		error();
@@ -39,20 +61,16 @@ int main(int argc, char *argv[])
 		error();
 	top_a->next = NULL;
 	top_b->next = NULL;
-	i = 1;
-	while (i < argc)
+	if (argc == 2)
+		try_split(top_a, argv[1]);
+	else
 	{
-		init_stack(top_a, argv[i]);
-		i++;
+		i = 1;
+		while (i < argc)
+			init_stack(top_a, argv[i++]);
 	}
 	if (is_sorted(top_a, top_b))
 		return (0);
-	//test
-	push_swap(top_a, top_b);
-//	printlst(top_a);
-//	printf("%s\n", "-");
-//	printlst(top_b);
-
-	free_all(top_a, top_b);
+	begin(top_a, top_b);
 	return (0);
 }

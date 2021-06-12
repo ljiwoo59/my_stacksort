@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bubblesort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ji-lee <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/12 14:40:06 by ji-lee            #+#    #+#             */
+/*   Updated: 2021/06/12 14:45:52 by ji-lee           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-void index_swap(int *i, int *j)
+void	index_swap(int *i, int *j)
 {
 	int tmp;
 
@@ -9,7 +21,7 @@ void index_swap(int *i, int *j)
 	*j = tmp;
 }
 
-void bubble_sort(int *arr, int n)
+void	bubble_sort(int *arr, int n)
 {
 	int i;
 	int j;

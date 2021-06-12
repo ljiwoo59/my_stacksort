@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algorithm2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ji-lee <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/12 14:37:15 by ji-lee            #+#    #+#             */
+/*   Updated: 2021/06/12 14:55:26 by ji-lee           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-void div_a5(t_stack *top_a, t_stack *top_b, t_count *here, int num)
+void	div_a5(t_stack *top_a, t_stack *top_b, t_count *here, int num)
 {
 	int pivot;
 	int i;
@@ -22,7 +34,7 @@ void div_a5(t_stack *top_a, t_stack *top_b, t_count *here, int num)
 	b_to_a(top_a, top_b, here);
 }
 
-void div_a(t_stack *top_a, t_stack *top_b, t_count *here, int num)
+void	div_a(t_stack *top_a, t_stack *top_b, t_count *here, int num)
 {
 	int pivot;
 	int i;
@@ -50,12 +62,12 @@ void div_a(t_stack *top_a, t_stack *top_b, t_count *here, int num)
 	b_to_a(top_a, top_b, here);
 }
 
-void div_b(t_stack *top_b, t_stack *top_a, t_count *curr, int num)
+void	div_b(t_stack *top_b, t_stack *top_a, t_count *curr, int num)
 {
-	int pivot;
-	int i;
-	int r;
-	int c;
+	int	pivot;
+	int	i;
+	int	r;
+	int	c;
 
 	pivot = find_pivot(top_b, num);
 	i = 1;
@@ -74,11 +86,11 @@ void div_b(t_stack *top_b, t_stack *top_a, t_count *curr, int num)
 	curr->next->count -= (i - 1);
 	div_a(top_a, top_b, curr, i - 1);
 }
-	
-void b_to_a(t_stack *top_a, t_stack *top_b, t_count *here)
+
+void	b_to_a(t_stack *top_a, t_stack *top_b, t_count *here)
 {
-	t_count *curr;
-	int num;
+	t_count	*curr;
+	int		num;
 
 	while (count_size(here))
 	{

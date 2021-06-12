@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ji-lee <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/12 14:39:31 by ji-lee            #+#    #+#             */
+/*   Updated: 2021/06/12 14:51:52 by ji-lee           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-void validation(char *str)
+void	validation(char *str)
 {
 	if (*str == '+' || *str == '-')
 	{
@@ -10,19 +22,19 @@ void validation(char *str)
 	}
 	while (*str)
 	{
-		if (!(*str >= '0' && *str <= '9')) 
+		if (!(*str >= '0' && *str <= '9'))
 			error();
 		str++;
 	}
 }
 
-int			ft_atoi(char *str)
+int		ft_atoi(char *str)
 {
 	long long	num;
 	int			minus;
 
 	num = 0;
-	minus = 1;	
+	minus = 1;
 	validation(str);
 	if (*str == '+' || *str == '-')
 	{

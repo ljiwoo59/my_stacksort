@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_op.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ji-lee <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/12 14:39:12 by ji-lee            #+#    #+#             */
+/*   Updated: 2021/06/12 14:43:43 by ji-lee           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-void sort1(t_stack *top_a)
+void	sort1(t_stack *top_a)
 {
 	ra(top_a);
 	sa(top_a);
 	rra(top_a);
 }
 
-void sort2(t_stack *top_a)
+void	sort2(t_stack *top_a)
 {
 	ra(top_a);
 	sa(top_a);
@@ -15,7 +27,7 @@ void sort2(t_stack *top_a)
 	sa(top_a);
 }
 
-void sort3(t_stack *top_a)
+void	sort3(t_stack *top_a)
 {
 	sa(top_a);
 	ra(top_a);
@@ -23,7 +35,7 @@ void sort3(t_stack *top_a)
 	rra(top_a);
 }
 
-void size_3_sort(t_stack *top_a)
+void	size_3_sort(t_stack *top_a)
 {
 	t_stack *f;
 
@@ -46,7 +58,7 @@ void size_3_sort(t_stack *top_a)
 	}
 }
 
-void size_3_sort2(t_stack *top_a)
+void	size_3_sort2(t_stack *top_a)
 {
 	t_stack *f;
 

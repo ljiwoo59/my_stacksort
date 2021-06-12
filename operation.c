@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operation.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ji-lee <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/12 14:39:48 by ji-lee            #+#    #+#             */
+/*   Updated: 2021/06/12 14:45:08 by ji-lee           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-void swap(t_stack *top)
+void	swap(t_stack *top)
 {
 	t_stack *tmp;
 	t_stack *tmp2;
@@ -15,7 +27,7 @@ void swap(t_stack *top)
 	}
 }
 
-void push(t_stack *top1, t_stack *top2)
+void	push(t_stack *top1, t_stack *top2)
 {
 	t_stack *tmp;
 	t_stack *tmp2;
@@ -30,7 +42,7 @@ void push(t_stack *top1, t_stack *top2)
 	}
 }
 
-void shift_up(t_stack *top)
+void	shift_up(t_stack *top)
 {
 	t_stack *tmp;
 	t_stack *curr;
@@ -47,7 +59,7 @@ void shift_up(t_stack *top)
 	}
 }
 
-void shift_down(t_stack *top)
+void	shift_down(t_stack *top)
 {
 	t_stack *tmp;
 	t_stack *curr;

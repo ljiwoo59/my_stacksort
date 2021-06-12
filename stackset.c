@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stackset.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ji-lee <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/12 14:39:53 by ji-lee            #+#    #+#             */
+/*   Updated: 2021/06/12 14:57:23 by ji-lee           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-int is_sorted(t_stack *top_a, t_stack *top_b)
+int		is_sorted(t_stack *top_a, t_stack *top_b)
 {
-	t_stack *curr;
-	int tmp;
+	t_stack	*curr;
+	int		tmp;
 
 	if (stack_size(top_b) != 0)
 		return (0);
@@ -19,11 +31,11 @@ int is_sorted(t_stack *top_a, t_stack *top_b)
 	return (1);
 }
 
-void stack_append(t_stack *top, t_stack *new, int num)
+void	stack_append(t_stack *top, t_stack *new, int num)
 {
-	t_stack *curr;
-	t_stack *tmp;
-	
+	t_stack	*curr;
+	t_stack	*tmp;
+
 	if (top->next == NULL)
 	{
 		top->next = new;
@@ -44,7 +56,7 @@ void stack_append(t_stack *top, t_stack *new, int num)
 	}
 }
 
-void count_append(t_count *curr, int c)
+void	count_append(t_count *curr, int c)
 {
 	t_count *new;
 
@@ -62,7 +74,7 @@ void count_append(t_count *curr, int c)
 	}
 }
 
-void free_all(t_stack *top_a, t_stack *top_b)
+void	free_all(t_stack *top_a, t_stack *top_b)
 {
 	t_stack *curr;
 	t_stack *tmp;
@@ -83,7 +95,7 @@ void free_all(t_stack *top_a, t_stack *top_b)
 	}
 }
 
-void free_count(t_count* curr)
+void	free_count(t_count *curr)
 {
 	free(curr->next);
 	curr->next = NULL;
