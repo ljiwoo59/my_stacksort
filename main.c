@@ -32,7 +32,8 @@ void	try_split(t_stack *top_a, char *argv)
 
 	n_arr = ft_split(argv, ' ');
 	i = 0;
-	len = ft_sstrlen(n_arr);
+	if ((len = ft_sstrlen(n_arr)) == 0)
+		error();
 	while (i < len)
 	{
 		init_stack(top_a, n_arr[i]);
@@ -54,21 +55,16 @@ int		main(int argc, char *argv[])
 	int		i;
 
 	if (argc == 1)
-		error();
+		return (0);
 	if (!(top_a = (t_stack *)malloc(sizeof(t_stack))))
 		error();
 	if (!(top_b = (t_stack *)malloc(sizeof(t_stack))))
 		error();
 	top_a->next = NULL;
 	top_b->next = NULL;
-	if (argc == 2)
-		try_split(top_a, argv[1]);
-	else
-	{
-		i = 1;
-		while (i < argc)
-			init_stack(top_a, argv[i++]);
-	}
+	i = 1;
+	while (i < argc)
+		try_split(top_a, argv[i++]);
 	if (is_sorted(top_a, top_b))
 		return (0);
 	begin(top_a, top_b);
