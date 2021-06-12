@@ -6,7 +6,7 @@
 /*   By: ji-lee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 14:41:04 by ji-lee            #+#    #+#             */
-/*   Updated: 2021/06/12 16:56:46 by ji-lee           ###   ########.fr       */
+/*   Updated: 2021/06/12 20:53:24 by ji-lee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ char				**ft_split(char *s, char c);
 int					ft_sstrlen(char **s);
 void				try_split(t_stack *top, char *argv);
 void				begin(t_stack *top_a, t_stack *top_b);
+int					ft_strlen(char *s);
 
 #endif

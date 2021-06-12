@@ -6,14 +6,26 @@
 /*   By: ji-lee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 14:39:31 by ji-lee            #+#    #+#             */
-/*   Updated: 2021/06/12 14:51:52 by ji-lee           ###   ########.fr       */
+/*   Updated: 2021/06/12 20:53:03 by ji-lee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
+int		ft_strlen(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
+}
+
 void	validation(char *str)
 {
+	if (ft_strlen(str) == 0)
+		error();
 	if (*str == '+' || *str == '-')
 	{
 		str++;
